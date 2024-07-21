@@ -5,7 +5,7 @@ export function TakeInfo({ name, age, handleNameChange, handleAgeChange, handleS
   return (
     <form onSubmit={handleSubmit} className="form-container">
       <h2 className="title">React 2nd Exercise</h2>
-      <input type="text" placeholder="Your name" value={name} onChange={handleNameChange} />
+      <input type="text" placeholder="Your name" inputmode="numeric" value={name} onChange={handleNameChange} />
       <br />
       <input type="number" placeholder="Birth year" value={age} onChange={handleAgeChange} />
       <br />
