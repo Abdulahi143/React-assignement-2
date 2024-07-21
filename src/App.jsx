@@ -4,31 +4,31 @@ import './App.css'; // Import the CSS file
 export function TakeInfo({ name, age, handleNameChange, handleAgeChange, handleSubmit }) {
   return (
     <form onSubmit={handleSubmit} className="form-container">
-      <h2 className="title">React Layliska 2aad</h2>
-      <input type="text" placeholder="Fadlan magacaaga geli" value={name} onChange={handleNameChange} />
+      <h2 className="title">React 2nd Exercise</h2>
+      <input type="text" placeholder="Your name" value={name} onChange={handleNameChange} />
       <br />
-      <input type="number" placeholder="Fadlan da'adaada geli" value={age} onChange={handleAgeChange} />
+      <input type="number" placeholder="Birth year" value={age} onChange={handleAgeChange} />
       <br />
-      <button type="submit">Gudbi</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }
 
 export function ResultInfo({ name, age }) {
+  const date = new Date();
   const parsedAge = parseInt(age);
-  
+  const currentYear = date.getFullYear();
+  const userAge = currentYear - parsedAge;
+
+    const isValidBirthYear = parsedAge > 1900 && parsedAge <= currentYear;
   return (
     <div className="result-container">
-      {name !== "" && !isNaN(parsedAge) ? (
-        parsedAge >= 18 ? (
-          <h1>Magacaagu waa {name} da´daaduna waxay ka weyn tahay 18 sanno!</h1>
-        ) : (
-          <h1>Magacaagu waa {name} da´daaduna waxay ka yar tahay 18 sanno!</h1>
-        )
+      {name !== "" && isValidBirthYear ? (
+        <h1>Hi {name}, your age is {userAge}!</h1>
       ) : name === "" ? (
-        <div className='error-container'>Fadlan Magacaaga geli!</div>
+        <div className="error-container">Please enter your name!</div>
       ) : (
-        <div className='error-container'>Fadlan Da´daada geli!</div>
+        <div className="error-container">Please enter a valid year of birth!</div>
       )}
     </div>
   );
